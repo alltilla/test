@@ -1,0 +1,17 @@
+name: test
+
+on:
+  push:
+
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+      - name: test
+        run: . test.sh
