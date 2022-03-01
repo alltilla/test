@@ -1,17 +1,25 @@
 name: test
 
 on:
+  workflow_dispatch:
   push:
 
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v2
-
       - name: test
-        run: . test.sh
+        run: |
+          mkdir -p foo/bar/baz
+          mkdir -p foo/bar/asd
+
+          touch foo/bar/baz/file.txt
+
+      - name: Store artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifact
+          path: foo/bar/baz/...
+
+          # baz/filte.txt
