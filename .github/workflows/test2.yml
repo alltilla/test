@@ -1,0 +1,10 @@
+name: Trigger tests for nightly APT packages
+
+on:
+  push:
+
+jobs:
+  test_nightly_packages:
+    uses: ./.github/workflows/test.yml
+    with:
+      pkg_type: "nightly"

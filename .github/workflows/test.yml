@@ -1,17 +1,16 @@
 name: test
 
 on:
-  push:
+  workflow_call:
+    inputs:
+      pkg_type:
+        required: true
+        type: string
 
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v2
-
       - name: test
-        run: . test.sh
+        run: echo ${{ inputs.pkg_type }}
